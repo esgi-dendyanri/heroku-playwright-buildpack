@@ -44,8 +44,8 @@ libatspi2.0-0
 libxshmfence-dev
 EOF
 
-		# If stack is heroku-24, install libasound2t64
-		if [[ "$STACK" == "heroku-24" ]]; then
+		# If stack is heroku-24 and heroku-26, install libasound2t64
+		if [[ "$STACK" == "heroku-24" || "$STACK" == "heroku-26" ]]; then
 			cat << EOF >>$build_tmpdir/Aptfile
 libasound2t64
 EOF
@@ -101,12 +101,13 @@ libvpx7
 EOF
 	    ;;
 		"heroku-24")
+		"heroku-26")
 	    cat << EOF >>$build_tmpdir/Aptfile
 libvpx9
 EOF
 	    ;;
 	  *)
-	    error "STACK must be 'heroku-18', 'heroku-20', 'heroku-22', or 'heroku-24'"
+	    error "STACK must be 'heroku-18', 'heroku-20', 'heroku-22', 'heroku-24', or 'heroku-26'"
 
 	esac
 
